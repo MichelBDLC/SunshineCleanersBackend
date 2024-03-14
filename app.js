@@ -15,10 +15,8 @@ app.get('*', (_, response) => {
 })
 
 app.post('/submit-contact-form', async (request, response) => {
-    console.log(request.body);
     const {name, email, phone, city, state, zip, serviceInterests, message} = request.body;
     try {
-        
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             host: 'smtp.gmail.com',
@@ -56,7 +54,6 @@ app.post('/submit-contact-form', async (request, response) => {
 });
 
 app.post('/submit-cleaner-app', async (request, response) => {
-    console.log(request.body);
     const {name, email, phone, city, state, zip, message} = request.body;
     try {
         
@@ -74,7 +71,7 @@ app.post('/submit-cleaner-app', async (request, response) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: 'info@shinecleaners.co',
-            subject: 'New Contact Form Submission',
+            subject: 'New Cleaner Application Submission',
             html: `
             <p>Name: ${name}</p>
             <p>Email: ${email}</p>
