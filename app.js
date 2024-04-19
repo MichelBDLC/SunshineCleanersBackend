@@ -15,7 +15,7 @@ app.get('*', (_, response) => {
 })
 
 app.post('/submit-contact-form', async (request, response) => {
-    const {name, email, phone, city, state, zip, serviceInterests, message} = request.body;
+    const {name, email, phone, city, state, zip, bedrooms, bathrooms, serviceInterests, message} = request.body;
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -39,6 +39,8 @@ app.post('/submit-contact-form', async (request, response) => {
             <p>City: ${city}</p>
             <p>State: ${state}</p>
             <p>Zip: ${zip}</p>
+            <p>${bedrooms} Bedrooms</p>
+            <p>${bathrooms} Bathrooms</p>
             <p>Service Interests: ${serviceInterests.join(', ')}</p>
             <p>Message: ${message}</p>`,
         };
